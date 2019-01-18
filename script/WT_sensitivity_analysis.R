@@ -13,8 +13,8 @@ l <- cbind(date, l)
 l <- l[,-2]
 
 #Monthly
-lb <- l
-df_grp_mean <-lb %>%
+a <- data
+df_grp_mean <-a %>%
   mutate(time_stamp=as.POSIXct(date)) %>%
   group_by(year=format(as.POSIXct(cut(time_stamp,breaks='year')),'%Y'),
            month=format(as.POSIXct(cut(time_stamp,breaks='month')),'%m')) %>%
@@ -28,9 +28,11 @@ df_grp_mean <-lb %>%
             e=mean(e,na.rm=TRUE),
             ta=mean(TA, na.rm=TRUE),
             ts=mean(TS, na.rm=TRUE),
-            rh=mean(RH, na.rm=TRUE))
+            rh=mean(RH, na.rm=TRUE),
+            upt = mean(upt, na.rm=TRUE),
+            ude= mean(ude,na.rm = TRUE))
 
-df_grp_sd <-lb %>%
+df_grp_sd <-a %>%
   mutate(time_stamp= as.POSIXct(date)) %>%
   group_by(year=format(as.POSIXct(cut(time_stamp,breaks='year')),'%Y'),
            month=format(as.POSIXct(cut(time_stamp,breaks='month')),'%m')) %>%
@@ -44,7 +46,9 @@ df_grp_sd <-lb %>%
             e_sd=sd(e,na.rm=TRUE),
             ta_sd=sd(TA, na.rm=TRUE),
             ts_sd=sd(TS, na.rm=TRUE),
-            rh_sd=sd(RH, na.rm=TRUE))
+            rh_sd=sd(RH, na.rm=TRUE),
+            upt_sd = sd(upt, na.rm=TRUE),
+            ude_sd= sd(ude,na.rm = TRUE))
 
 #Merge the two dataframe
 df_group_month <-merge(df_grp_mean,df_grp_sd,by=c('year','month'))
