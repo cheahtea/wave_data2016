@@ -310,3 +310,6 @@ mtext(expression(paste('F'['CO']['2'])),side = 2,line=2)
 mtext(expression('u'['*']),side = 1,line=2.3)
 dev.off()
 
+plot(monthly_data$u., monthly_data$k_N2000, pch=16, col='darkblue',xlab= 'u*', ylab='k3')
+lm2 <- lm(monthly_data$k_N2000 ~ monthly_data$u.)
+abline(lm2,col='red', lwd=3)

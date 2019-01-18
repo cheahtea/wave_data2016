@@ -8,7 +8,7 @@ b<-cbind(b,wdeltaT_SST)
 path_fig <- file.path('figs/H_W_U_v1.jpg')
 jpeg(file=path_fig,width=20,height=16,res=400, units = 'cm')
 par(family='serif', mfrow = c(2,2),
-    mar = c(3.9, 3.9, 1, 1))
+    mar = c(3.9, 3.9, 1, 1))5
 
 plot(b$upt, b$H, pch=16, col='darkblue',xlab= 'upt', ylab='H')
 lm4 <- lm(b$H ~ b$upt)
